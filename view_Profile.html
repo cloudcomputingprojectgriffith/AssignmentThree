@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>View Profile </title>
+
+    <style type="text/css">
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    thead {
+      background: #ffffff;
+      color: #fff;
+    }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 5px;
+    }
+    tr:hover:nth-child(even) {
+      background-color: #EEEEEE;
+    }
+    body {
+      font-family: "Times New Roman", Times, serif;
+    }
+    a:visited {
+      color: blue;
+    }
+    a:hover {
+      color: green;
+    }
+
+    </style>
+</head>
+<body>
+
+<div style="text-align: right;">Logout <a href="{{ logout_url }}">here</a><br></div>
+
+<h1 style="text-align:center;"> View Profile </h1>
+
+
+<p>Name : <input type="text" name="userName" value="{{ myuser.userName }}" readonly/>
+    <br/></p>
+<p>Email : <input type="text" name="email" value="{{ myuser.email }}" readonly/>
+    <br/></p>
+<p>Bio: <input type="text" name="shortProfile" value="{{ myuser.bio }}" readonly/>
+    <br/></p>
+
+
+<form action="/view_Profile" method="post">
+
+    <input type="submit" name="button" value="Cancel"/>
+
+</form>
+
+
+{% if range > 0 %}
+
+
+{% for i in range %}
+
+{{userModel.tweet[i]}}
+
+
+{% endfor %}
+
+
+{% endif %}
+
+
+</body>
+</html>

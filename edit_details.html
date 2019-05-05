@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Update Profile </title>
+
+    <style type="text/css">
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    thead {
+      background: #ffffff;
+      color: #fff;
+    }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 5px;
+    }
+    tr:hover:nth-child(even) {
+      background-color: #EEEEEE;
+    }
+    body {
+      font-family: "Times New Roman", Times, serif;
+    }
+    a:visited {
+      color: blue;
+    }
+    a:hover {
+      color: green;
+    }
+
+
+
+    </style>
+</head>
+<body>
+
+<div style="text-align: right;">Logout <a href="{{ logout_url }}">here</a><br></div>
+
+<h1 style="text-align:center;"> Update Profile </h1>
+
+<form action="/edit_details" method="post">
+
+
+    <p>Name : <input type="text" name="userName" value="{{ myuser.userName }}" readonly/>
+        <br/></p>
+    <p>Email : <input type="text" name="email" value="{{ myuser.email }}"/>
+        <br/></p>
+    <p>Bio: <input type="text" name="bio" value="{{ myuser.bio }}"/>
+        <br/></p>
+
+    <input type="submit" name="button" value="update"/>
+</form>
+<br/><br/>
+
+
+<form action="/edit_details" method="post">
+
+    <input type="submit" name="button" value="Cancel"/>
+
+</form>
+
+
+{% if range > 0 %}
+
+
+{% for i in range %}
+
+{{userModel.tweet[i]}}
+
+
+{% endfor %}
+
+
+{% endif %}
+
+
+</body>
+</html>

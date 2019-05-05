@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Home Page </title>
+
+    <style type="text/css">
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    thead {
+      background: #ffffff;
+      color: #fff;
+    }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 5px;
+    }
+    tr:hover:nth-child(even) {
+      background-color: #EEEEEE;
+    }
+    body {
+      font-family: "Times New Roman", Times, serif;
+    }
+    a:visited {
+      color: blue;
+    }
+    a:hover {
+      color: green;
+    }
+
+
+
+    </style>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<div style="text-align: right;"> logout <a href="{{ logout_url }}">here</a><br></div>
+
+<h1 style="text-align:center;"> Welcome to the basic implementation of Twitter</h1>
+
+
+<a href="/edit_details?username={{ myuser.userName }}"> Update Profile </a><br/><br/>
+
+<form action="/add_tweet" method="post">
+    <div>
+
+
+        <label>Add Tweet:</label>
+        <textarea name="tweet_input" maxlength="280"></textarea><br/><br/>
+
+        <input type="submit" name="button" value="Add">
+        <br/>
+    </div>
+</form>
+
+
+<br/> <br/>
+
+<form action="/search_content" method="post" style="text align: center">
+    <input type="text area" name="word"/>
+    <input type="submit" name="button" value="search"/>
+
+    <br/>
+</form>
+<br/><br/>
+
+
+{%for i in tweet_search%}
+{{i}}<br/><br/>
+{%endfor%}
+
+{%for search in username_search %}
+<a href="/view_Profile?username={{ search.userName }}">{{ search.userName }}</a><br/><br/>
+{%endfor%}
+
+
+{%for i in tweet%}
+{%for t in i.tweet%}
+{{ t }}<br/><br/>
+{% endfor %}
+{%endfor%}
+
+</body>
+</html>
